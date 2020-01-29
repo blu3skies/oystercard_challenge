@@ -1,11 +1,12 @@
 class Oyster_card 
 
-attr_reader :balance 
+attr_reader :balance, :en_route
 
 MINIMUM_FARE = 1
 
     def initialize
       @balance = 0
+      @en_route = false
     end    
 
     def top_up(amount)
@@ -15,7 +16,9 @@ MINIMUM_FARE = 1
 
     def deduct(fare)
         @balance = @balance - MINIMUM_FARE
-    end    
+    end   
+    
+    
 
 
 end
