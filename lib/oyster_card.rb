@@ -25,6 +25,7 @@ MINIMUM_FARE = 1
 
     def touch_out
         @en_route = false
+        @balance = @balance - MINIMUM_FARE
     end
     
     

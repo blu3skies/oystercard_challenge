@@ -60,8 +60,16 @@ describe Oyster_card do
             oyster.touch_out
             expect(oyster.en_route).to eq false 
         end
-    end 
 
+        it 'should minus minimum far when touching out' do
+            oyster = Oyster_card.new
+            oyster.top_up(10)
+            oyster.touch_in 
+            oyster.touch_out
+            expect { oyster.touch_out }.to change{oyster.balance}.by(-Oyster_card::MINIMUM_FARE)
+    
+        end 
+    end
 
 end 
 
