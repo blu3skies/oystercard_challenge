@@ -1,7 +1,7 @@
 require 'oyster_card'
 
 describe Oyster_card do
-
+    # let(:oyster_card) { Oyster_card.new.top_up(10)}
     it 'should initilize the card with a balance of 0' do
         expect(subject.balance).to eq 0
     end    
@@ -41,15 +41,21 @@ describe Oyster_card do
 
         it 'touch in should equal in_journey to true' do
             oyster = Oyster_card.new
+            oyster.top_up(10)
             oyster.touch_in 
             expect(oyster.en_route).to eq true
         end
+
+        it 'should raise error if balance is less than Minimum fare' do 
+            expect { subject.touch_in }.to raise_error 'balance too low'
+        end 
     end
      
     describe '#touch_out' do     
 
         it 'touch_out should equal in journey to false' do
             oyster = Oyster_card.new
+            oyster.top_up(10)
             oyster.touch_in 
             oyster.touch_out
             expect(oyster.en_route).to eq false 

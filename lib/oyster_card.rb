@@ -19,6 +19,7 @@ MINIMUM_FARE = 1
     end   
 
     def touch_in
+        raise 'balance too low' if @balance < MINIMUM_FARE
         @en_route = true 
     end
 
