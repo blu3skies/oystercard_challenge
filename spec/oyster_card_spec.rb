@@ -20,16 +20,6 @@ describe Oyster_card do
 
     end 
 
-    describe '#deduct' do 
-
-        it 'should deduct fare from balance' do
-            oyster = Oyster_card.new 
-            oyster.top_up(10)
-            expect(oyster.deduct(1)).to eq 9
-        end
-
-    end 
-
     describe '#en_route' do
     
         it 'en_route should be false' do 
@@ -40,8 +30,7 @@ describe Oyster_card do
     describe '#touch_in' do    
 
         it 'touch in should equal in_journey to true' do
-            oyster = Oyster_card.new
-            oyster.top_up(10)
+            oyster = Oyster_card.new(10)
             oyster.touch_in 
             expect(oyster.en_route).to eq true
         end
@@ -54,8 +43,7 @@ describe Oyster_card do
     describe '#touch_out' do     
 
         it 'touch_out should equal in journey to false' do
-            oyster = Oyster_card.new
-            oyster.top_up(10)
+            oyster = Oyster_card.new(10)
             oyster.touch_in 
             oyster.touch_out
             expect(oyster.en_route).to eq false 
