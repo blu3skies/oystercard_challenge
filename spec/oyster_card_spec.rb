@@ -32,10 +32,30 @@ describe Oyster_card do
 
     describe '#en_route' do
     
-        it 'touch in should equal in_journey to true' do 
+        it 'en_route should be false' do 
             expect(subject.en_route).to eq false
         end
+    end
 
+    describe '#touch_in' do    
+
+        it 'touch in should equal in_journey to true' do
+            oyster = Oyster_card.new
+            oyster.touch_in 
+            expect(oyster.en_route).to eq true
+        end
+    end
+     
+    describe '#touch_out' do     
+
+        it 'touch_out should equal in journey to false' do
+            oyster = Oyster_card.new
+            oyster.touch_in 
+            oyster.touch_out
+            expect(oyster.en_route).to eq false 
+        end
     end 
+
+
 end 
 

@@ -17,8 +17,14 @@ MINIMUM_FARE = 1
     def deduct(fare)
         @balance = @balance - MINIMUM_FARE
     end   
+
+    def touch_in
+        @en_route = true 
+    end
+
+    def touch_out
+        @en_route = false
+    end
     
     
-
-
 end
