@@ -12,13 +12,14 @@ describe Oyster_card do
 
     it 'should raise an error if new balance exceeds limit' do
         oyster = Oyster_card.new
-        oyster.top_up(90)
+        p oyster.top_up(90)
         expect { oyster.top_up(1) }.to raise_error("Limit exceeded")
     end
 
+    it 'should deduct fare from balance' do
+        oyster = Oyster_card.new 
+        p oyster.top_up(10)
+        expect(oyster.deduct(1)).to eq 9
+    end    
 end 
 
-# name error 
-# ./spec/oyster_card_spec.rb:1:in `<top (required)>'
-# 1
-# make a oyster card file with class oc
