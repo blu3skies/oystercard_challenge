@@ -7,6 +7,7 @@ class Oyster_card
     @en_route = false
     @entry_station = nil
     @previous_trips = 'previous_trips'
+    @exit_station = nil
   end
 
   def top_up(amount)
@@ -22,10 +23,11 @@ class Oyster_card
     @entry_station = station
   end
 
-  def touch_out
+  def touch_out(station)
     @en_route = false
     @balance = @balance - MINIMUM_FARE
     @entry_station = nil
+    @exit_station = station 
   end
 
   private

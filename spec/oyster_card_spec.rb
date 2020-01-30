@@ -51,7 +51,7 @@ describe Oyster_card do
         it 'touch_out should equal in journey to false' do
             oyster = Oyster_card.new(10)
             oyster.touch_in('') 
-            oyster.touch_out
+            oyster.touch_out(station)
             expect(oyster.en_route).to eq false 
         end
 
@@ -59,11 +59,14 @@ describe Oyster_card do
             oyster = Oyster_card.new
             oyster.top_up(10)
             oyster.touch_in('') 
-            oyster.touch_out
-            expect { oyster.touch_out }.to change{oyster.balance}.by(-Oyster_card::MINIMUM_FARE)
+            oyster.touch_out(station)
+            expect { oyster.touch_out(station) }.to change{oyster.balance}.by(-Oyster_card::MINIMUM_FARE)
     
         end 
 
+        it 'should require an exit station' do
+            expect(subject.touch_out(station)).to eq(station)
+        end
 
     end
 
@@ -72,7 +75,7 @@ describe Oyster_card do
       it 'should return all previous trips' do
         subject.top_up(10)
         subject.touch_in('') 
-        subject.touch_out
+        subject.touch_out(station)
         expect(subject.previous_trips).to eq 'previous_trips'
       end 
     end  
