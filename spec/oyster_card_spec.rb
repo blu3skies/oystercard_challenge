@@ -63,7 +63,19 @@ describe Oyster_card do
             expect { oyster.touch_out }.to change{oyster.balance}.by(-Oyster_card::MINIMUM_FARE)
     
         end 
+
+
     end
 
+    describe '#previous_trips' do 
+      
+      it 'should return all previous trips' do
+        subject.top_up(10)
+        subject.touch_in('') 
+        subject.touch_out
+        expect(subject.previous_trips).to eq 'previous_trips'
+      end 
+    end  
+    
 end 
 
