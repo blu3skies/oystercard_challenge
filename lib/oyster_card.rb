@@ -6,7 +6,7 @@ class Oyster_card
     @balance = balance
     @en_route = false
     @entry_station = nil
-    @previous_trips = 'previous_trips'
+    @previous_trips = []
     @exit_station = nil
   end
 
@@ -24,10 +24,12 @@ class Oyster_card
   end
 
   def touch_out(station)
+    @exit_station = station
+    @balance -= MINIMUM_FARE
     @en_route = false
-    @balance = @balance - MINIMUM_FARE
+    @previous_trips.push({:entry_station => @entry_station, :exit_station => @exit_station})
     @entry_station = nil
-    @exit_station = station 
+    return station
   end
 
   private
