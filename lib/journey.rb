@@ -1,5 +1,6 @@
 class Journey
   def entry_station
-
-  end 
+  end
+  def exit_station
+  end
 end
