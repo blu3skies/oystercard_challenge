@@ -62,6 +62,7 @@ describe Oyster_card do
             oyster.touch_in(entry_station)
             oyster.touch_out(exit_station)
             expect { oyster.touch_out(exit_station) }.to change{oyster.balance}.by(-Oyster_card::MINIMUM_FARE)
+    
         end 
 
         it 'should require an exit station' do
@@ -84,4 +85,5 @@ describe Oyster_card do
       end
     end
     
-end
+end 
+
